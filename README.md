@@ -1,4 +1,3 @@
 # server-ansible
 
-
-teste ferramenta ansible.
+Configuracao ansible Server.
