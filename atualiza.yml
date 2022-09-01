@@ -1,0 +1,6 @@
+- hosts: local
+  sudo: True
+  user: ansible
+  tasks:
+    - name: atualiza pacotes
+      shell: sudo apt-get update

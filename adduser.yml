@@ -1,0 +1,5 @@
+---
+- hosts: glpi
+  tasks:
+   - name: Adicionar usuario helpdesk
+     user: name=helpdesk state=present shell=/bin/bash password=12345

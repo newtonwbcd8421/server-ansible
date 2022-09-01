@@ -1,0 +1,5 @@
+plugin: nmap
+address: 10.140.140.0/24
+exclude: 10.140.140.1
+ports: false
+strict: false
