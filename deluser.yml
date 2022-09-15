@@ -1,5 +1,5 @@
 ---
-- hosts: glpi
+- hosts: local
   tasks:
    - name: deletar usuario helpdesk
      user: name=helpdesk state=absent remove=yes
