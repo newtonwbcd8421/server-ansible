@@ -7,9 +7,9 @@
   - name: instalar apache2
     apt:
       name: apache2
-      state: latest
+      state: absent
 
   - name: add php suppot for apache
     apt: 
       name: libapache2-mod-php
-      state: latest
+      state: absent
