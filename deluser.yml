@@ -1,5 +1,11 @@
 ---
-- hosts: local
+- hosts: webserver
+  become: true
+  vars:
+    name_user: helpdesk
   tasks:
-   - name: deletar usuario helpdesk
-     user: name=helpdesk state=absent remove=yes
+   - name: deletar usuario
+     user: 
+       name: "{{name_user}}" 
+       state: absent 
+       remove: yes
