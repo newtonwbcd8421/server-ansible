@@ -5,7 +5,11 @@
     name_user: helpdesk
   tasks:
    - name: Adicionar usuario helpdesk
-     user: name={{name_user}} state=present shell=/bin/bash password=$1$fMO2gw5a$Z4k1Vn5haMxUXUF4k6t2D.
+     user: 
+       name: "{{name_user}}"
+       state: present
+       shell: /bin/bash 
+       password: $1$fMO2gw5a$Z4k1Vn5haMxUXUF4k6t2D.
 
    - name: Adiciona usuario no grupo sudo
      shell: usermod -aG sudo "{{name_user}}"
