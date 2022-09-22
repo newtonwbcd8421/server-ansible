@@ -1,20 +1,29 @@
 ---
 - hosts: webserver
   become: true
+  vars: 
+    name_user: helpdesk
   tasks:
    - name: Adicionar usuario helpdesk
-     user: name=helpdesk state=present shell=/bin/bash password=$1$fMO2gw5a$Z4k1Vn5haMxUXUF4k6t2D.
-   
+     user: name={{name_user}} state=present shell=/bin/bash password=$1$fMO2gw5a$Z4k1Vn5haMxUXUF4k6t2D.
+
+   - name: Adiciona usuario no grupo sudo
+     shell: usermod -aG sudo "{{name_user}}"
+
    - name: cria diretorio .ssh
-     ansible.builtin.file:
-       path: /home/ansible/.ssh
+     file:
+       path: /home/{{name_user}}/.ssh
        state: directory
-       owner: ansible
-       group: ansible
+       owner: "{{name_user}}"
+       group: "{{name_user}}"
+
    - name: copia chave ssh
      tags: copia_chave
      copy:
-       src: /tmp/chave.key
-       owner: ansible
-       group: ansible
-       dest: /home/ansible/.ssh
+       src: /tmp/id_rsa.pub
+       owner: "{{name_user}}"
+       group: "{{name_user}}"
+       dest: /home/{{name_user}}/.ssh/
+
+   - name: altera nome arquivo
+     shell: mv /home/{{name_user}}/.ssh/id_rsa.pub /home/{{name_user}}/.ssh/authorized_keys 
