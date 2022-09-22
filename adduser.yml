@@ -3,7 +3,7 @@
   become: true
   tasks:
    - name: Adicionar usuario helpdesk
-     user: name=helpdesk state=present shell=/bin/bash password=$1$5b7Sfh3n$5c9Zibk.EYK4GrHHK3fz91
+     user: name=helpdesk state=present shell=/bin/bash password=$1$fMO2gw5a$Z4k1Vn5haMxUXUF4k6t2D.
    
    - name: cria diretorio .ssh
      ansible.builtin.file:
